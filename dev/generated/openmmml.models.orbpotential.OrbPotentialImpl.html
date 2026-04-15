@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>openmmml.mlpotential.MLPotentialImplFactory &#8212; OpenMM ML 1.6dev_272202d documentation</title>
+    <title>openmmml.models.orbpotential.OrbPotentialImpl &#8212; OpenMM ML 1.6dev_272202d documentation</title>
   
   
   
@@ -41,7 +41,7 @@
     <script src="../_static/documentation_options.js?v=cd36f405"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/openmmml.mlpotential.MLPotentialImplFactory';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/openmmml.models.orbpotential.OrbPotentialImpl';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://openmm.github.io/openmm-ml/dev/_static/versions.json';
@@ -52,8 +52,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="openmmml.mlpotential.MLPotentialImpl" href="openmmml.mlpotential.MLPotentialImpl.html" />
-    <link rel="prev" title="openmmml.MLPotential" href="openmmml.MLPotential.html" />
+    <link rel="next" title="openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl" href="openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl.html" />
+    <link rel="prev" title="openmmml.models.nequippotential.NequIPPotentialImpl" href="openmmml.models.nequippotential.NequIPPotentialImpl.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="dev" />
@@ -374,11 +374,11 @@
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="openmmml.MLPotential.html">openmmml.MLPotential</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">openmmml.mlpotential.MLPotentialImplFactory</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="openmmml.mlpotential.MLPotentialImplFactory.html">openmmml.mlpotential.MLPotentialImplFactory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openmmml.mlpotential.MLPotentialImpl.html">openmmml.mlpotential.MLPotentialImpl</a></li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="openmmml.models.aimnet2potential.AIMNet2PotentialImpl.html">openmmml.models.aimnet2potential.AIMNet2PotentialImpl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openmmml.models.anipotential.ANIPotentialImpl.html">openmmml.models.anipotential.ANIPotentialImpl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openmmml.models.asepotential.ASEPotentialImpl.html">openmmml.models.asepotential.ASEPotentialImpl</a></li>
@@ -386,7 +386,7 @@
 <li class="toctree-l1"><a class="reference internal" href="openmmml.models.fennixpotential.FeNNixPotentialImpl.html">openmmml.models.fennixpotential.FeNNixPotentialImpl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openmmml.models.macepotential.MACEPotentialImpl.html">openmmml.models.macepotential.MACEPotentialImpl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openmmml.models.nequippotential.NequIPPotentialImpl.html">openmmml.models.nequippotential.NequIPPotentialImpl</a></li>
-<li class="toctree-l1"><a class="reference internal" href="openmmml.models.orbpotential.OrbPotentialImpl.html">openmmml.models.orbpotential.OrbPotentialImpl</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">openmmml.models.orbpotential.OrbPotentialImpl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl.html">openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl</a></li>
 </ul>
 </div>
@@ -431,7 +431,7 @@
     
     <li class="breadcrumb-item"><a href="../api.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">openmmml.mlpotential.MLPotentialImplFactory</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">openmmml.models.orbpotential.OrbPotentialImpl</span></li>
   </ul>
 </nav>
 </div>
@@ -448,54 +448,59 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="openmmml-mlpotential-mlpotentialimplfactory">
-<h1>openmmml.mlpotential.MLPotentialImplFactory<a class="headerlink" href="#openmmml-mlpotential-mlpotentialimplfactory" title="Link to this heading">#</a></h1>
+  <section id="openmmml-models-orbpotential-orbpotentialimpl">
+<h1>openmmml.models.orbpotential.OrbPotentialImpl<a class="headerlink" href="#openmmml-models-orbpotential-orbpotentialimpl" title="Link to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="openmmml.mlpotential.MLPotentialImplFactory">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">openmmml.mlpotential.</span></span><span class="sig-name descname"><span class="pre">MLPotentialImplFactory</span></span><a class="headerlink" href="#openmmml.mlpotential.MLPotentialImplFactory" title="Link to this definition">#</a></dt>
-<dd><p>Abstract interface for classes that create MLPotentialImpl objects.</p>
-<p>If you are defining a new potential function, you need to create subclasses
-of MLPotentialImpl and MLPotentialImplFactory, and register an instance of
-the factory by calling MLPotential.registerImplFactory().  Alternatively,
-if a Python package creates an entry point in the group “openmmml.potentials”,
-the potential will be registered automatically.  The entry point name is the
-name of the potential function, and the value should be the name of the
-MLPotentialImplFactory subclass.</p>
+<dt class="sig sig-object py" id="openmmml.models.orbpotential.OrbPotentialImpl">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">openmmml.models.orbpotential.</span></span><span class="sig-name descname"><span class="pre">OrbPotentialImpl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmmml.models.orbpotential.OrbPotentialImpl" title="Link to this definition">#</a></dt>
+<dd><p>Implementation of Orb potentials for OpenMM.</p>
+<p>To use one of the recommended pretrained models, specify it by name:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">potential</span> <span class="o">=</span> <span class="n">MLPotential</span><span class="p">(</span><span class="s1">&#39;orb-v3-conservative-omol&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This gives Orb-v3 (with conservative forces) trained on OMol25.  Orb-v3
+trained on OMat24 is also available as <cite>orb-v3-conservative-inf-omat</cite>.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="openmmml.mlpotential.MLPotentialImplFactory.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openmmml.mlpotential.MLPotentialImplFactory.__init__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="openmmml.models.orbpotential.OrbPotentialImpl.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#openmmml.models.orbpotential.OrbPotentialImpl.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the <cite>OrbPotentialImpl</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The full name of the Orb model to load.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#openmmml.mlpotential.MLPotentialImplFactory.__init__" title="openmmml.mlpotential.MLPotentialImplFactory.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmmml.models.orbpotential.OrbPotentialImpl.__init__" title="openmmml.models.orbpotential.OrbPotentialImpl.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(name)</p></td>
+<td><p>Initialize the <cite>OrbPotentialImpl</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#openmmml.mlpotential.MLPotentialImplFactory.createImpl" title="openmmml.mlpotential.MLPotentialImplFactory.createImpl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createImpl</span></code></a>(name, **args)</p></td>
-<td><p>Create a MLPotentialImpl that will be used to implement a MLPotential.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmmml.models.orbpotential.OrbPotentialImpl.addForces" title="openmmml.models.orbpotential.OrbPotentialImpl.addForces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addForces</span></code></a>(topology, system, atoms, forceGroup)</p></td>
+<td><p>Add Force objects to a System to implement the potential function.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="openmmml.mlpotential.MLPotentialImplFactory.createImpl">
-<span class="sig-name descname"><span class="pre">createImpl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="openmmml.mlpotential.MLPotentialImpl.html#openmmml.mlpotential.MLPotentialImpl" title="openmmml.mlpotential.MLPotentialImpl"><span class="pre">MLPotentialImpl</span></a></span></span><a class="headerlink" href="#openmmml.mlpotential.MLPotentialImplFactory.createImpl" title="Link to this definition">#</a></dt>
-<dd><p>Create a MLPotentialImpl that will be used to implement a MLPotential.</p>
-<p>When a MLPotential is created, it invokes this method to create an object
-implementing the requested potential.  Subclasses must implement this method
-to return an instance of the correct MLPotentialImpl subclass.</p>
+<dt class="sig sig-object py" id="openmmml.models.orbpotential.OrbPotentialImpl.addForces">
+<span class="sig-name descname"><span class="pre">addForces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topology</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Topology</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">System</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forceGroup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiplicity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#openmmml.models.orbpotential.OrbPotentialImpl.addForces" title="Link to this definition">#</a></dt>
+<dd><p>Add Force objects to a System to implement the potential function.</p>
+<p>This is invoked by MLPotential.createSystem().  Subclasses must implement
+it to create the requested potential function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em>) – the name of the potential that was specified to the MLPotential constructor</p></li>
-<li><p><strong>args</strong> – any additional keyword arguments that were provided to the MLPotential
-constructor are passed to this method.  This allows subclasses to customize
-their behavior based on extra arguments.</p></li>
+<li><p><strong>topology</strong> (<em>Topology</em>) – the Topology from which the System is being created</p></li>
+<li><p><strong>system</strong> (<em>System</em>) – the System that is being created</p></li>
+<li><p><strong>atoms</strong> (<em>Optional</em><em>[</em><em>Iterable</em><em>[</em><em>int</em><em>]</em><em>]</em>) – the indices of atoms the potential should be applied to, or None if
+it should be applied to the entire System</p></li>
+<li><p><strong>forceGroup</strong> (<em>int</em>) – the force group that any newly added Forces should be in</p></li>
+<li><p><strong>args</strong> – any additional keyword arguments that were provided to createSystem()
+are passed to this method.  This allows subclasses to customize their
+behavior based on extra arguments.</p></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>a MLPotentialImpl that implements the potential</p>
 </dd>
 </dl>
 </dd></dl>
@@ -515,20 +520,20 @@ their behavior based on extra arguments.</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="openmmml.MLPotential.html"
+       href="openmmml.models.nequippotential.NequIPPotentialImpl.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">openmmml.MLPotential</p>
+        <p class="prev-next-title">openmmml.models.nequippotential.NequIPPotentialImpl</p>
       </div>
     </a>
     <a class="right-next"
-       href="openmmml.mlpotential.MLPotentialImpl.html"
+       href="openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">openmmml.mlpotential.MLPotentialImpl</p>
+        <p class="prev-next-title">openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -551,9 +556,9 @@ their behavior based on extra arguments.</p></li>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openmmml.mlpotential.MLPotentialImplFactory"><code class="docutils literal notranslate"><span class="pre">MLPotentialImplFactory</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openmmml.mlpotential.MLPotentialImplFactory.__init__"><code class="docutils literal notranslate"><span class="pre">MLPotentialImplFactory.__init__()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openmmml.mlpotential.MLPotentialImplFactory.createImpl"><code class="docutils literal notranslate"><span class="pre">MLPotentialImplFactory.createImpl()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openmmml.models.orbpotential.OrbPotentialImpl"><code class="docutils literal notranslate"><span class="pre">OrbPotentialImpl</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openmmml.models.orbpotential.OrbPotentialImpl.__init__"><code class="docutils literal notranslate"><span class="pre">OrbPotentialImpl.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openmmml.models.orbpotential.OrbPotentialImpl.addForces"><code class="docutils literal notranslate"><span class="pre">OrbPotentialImpl.addForces()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -562,7 +567,7 @@ their behavior based on extra arguments.</p></li>
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/generated/openmmml.mlpotential.MLPotentialImplFactory.rst.txt">
+    <a href="../_sources/generated/openmmml.models.orbpotential.OrbPotentialImpl.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

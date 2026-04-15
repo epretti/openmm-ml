@@ -12,16 +12,23 @@ provides a common interface for working with them, and handles all the details o
 
 ## Installation
 
-The stable version of OpenMM-ML can be installed with conda or mamba.
+The stable version of OpenMM-ML can be installed with pip.
+
+```
+pip install openmmml
+```
+
+This installs only OpenMM-ML itself, not the packages that provide specific models.  Those must be installed separately
+by following the instructions from the package developers.
+
+OpenMM-ML can also be installed with conda or mamba.
 
 ```bash
 mamba install -c conda-forge openmm-ml
 ```
 
-We recommend using mamba, since it is faster and less buggy than conda.
-
-This installs only OpenMM-ML itself, not the packages that provide specific models.  Those must be installed separately
-by following the instructions from the package developers.
+However, we generally recommend using pip because most of the packages that provide models are only available
+with pip, not conda.
 
 ## Usage
 
@@ -147,8 +154,7 @@ When using NequIP models, the following extra keyword arguments to `createSystem
 
 The [TorchANI](https://github.com/aiqm/torchani) package can be used to create models using the pretrained
 [ANI-1ccx](https://www.nature.com/articles/s41467-019-10827-4) and [ANI-2x](https://pubs.acs.org/doi/full/10.1021/acs.jctc.0c00121)
-potentials.  The  [NNPOps](https://github.com/openmm/NNPOps) package can optionally be used to accelerate model
-calculations.
+potentials.
 
 Both ANI-1ccx and ANI-2x are ensembles of eight models.  Averaging over all eight  models leads to slightly more accurate
 results than any one individually.  You can optionally use only a single model, which leads to a large improvement in
@@ -165,8 +171,8 @@ When using TorchANI models, the following extra keyword arguments to `createSyst
 
 | Argument | Description |
 | --- | --- |
-| `implementation` | Selects the implementation to use.  Supported options are `'nnpops'` (tends to be faster for small systems) and `'torchani'` (tends to be faster for large systems). |
- | `modelIndex` | The index of the model within the ensemble to use.  If it is `None`, the full ensemble of eight models is used. |
+| `modelIndex` | The index of the model within the ensemble to use.  If it is `None`, the full ensemble of eight models is used. |
+| `device` | The PyTorch device to perform calculations on, either a `torch.device` object or a string (such as `'cuda'` or `'cpu'`.)  If omitted, a device is chosen automatically. |
 
 ### DeePMD-kit
 
@@ -230,7 +236,7 @@ OpenMM-ML has an interface to the [FeNNol](https://github.com/FeNNol-tools/FeNNo
 package for simulating [FeNNix](https://github.com/FeNNol-tools/FeNNol-PMC) models.
 The following model names are supported.
 
-| Argument | Description |
+| Name | Model |
 | --- | --- |
 | `fennix-bio1-small` | Pretrained [FeNNix-Bio1(S)](https://github.com/FeNNol-tools/FeNNol-PMC/tree/main/FENNIX-BIO1) model. |
 | `fennix-bio1-medium` | Pretrained [FeNNix-Bio1(M)](https://github.com/FeNNol-tools/FeNNol-PMC/tree/main/FENNIX-BIO1) model. |
@@ -250,6 +256,24 @@ When using FeNNix models, the following extra keyword arguments to `createSystem
 | --- | --- |
 | `charge` | The total charge of the system.  If omitted, it is assumed to be 0. |
 | `precision` | `'single'` for single precision (the default if not specified) or `'double'` for double precision. |
+
+### Orb
+
+OpenMM-ML supports the [Orb models](https://github.com/orbital-materials/orb-models)
+from Orbital Materials.  The following model names are supported.
+
+| Name | Model |
+| --- | --- |
+| `orb-v3-conservative-inf-omat` | [Orb-v3](https://doi.org/10.48550/arXiv.2504.06231) model pretrained on [OMat24](https://doi.org/10.48550/arXiv.2410.12771). |
+| `orb-v3-conservative-omol` | [Orb-v3](https://doi.org/10.48550/arXiv.2504.06231) model pretrained on [OMol25](https://doi.org/10.48550/arXiv.2505.08762). |
+
+When using Orb models, the following extra keyword arguments to `createSystem()` and `createMixedSystem()` are supported.
+
+| Argument | Description |
+| --- | --- |
+| `charge` | The total charge of the system.  If omitted, it is assumed to be 0. |
+| `multiplicity` | The spin multiplicity of the system.  If omitted, it is assumed to be 1. |
+| `device` | The PyTorch device to perform calculations on, either a `torch.device` object or a string (such as `'cuda'` or `'cpu'`.)  If omitted, a device is chosen automatically. |
 
 ### ASE
 
