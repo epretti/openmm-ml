@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>User Guide &#8212; OpenMM ML 1.7dev_d50a6d5 documentation</title>
+    <title>User Guide &#8212; OpenMM ML 1.7dev_6d16a80 documentation</title>
   
   
   
@@ -27,23 +27,23 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="_static/documentation_options.js?v=773c8d1a"></script>
+    <script src="_static/documentation_options.js?v=930fe094"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'userguide';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://openmm.github.io/openmm-ml/dev/_static/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -1017,14 +1017,43 @@ sure the Atoms and Topology are fully consistent with each other.</p>
 </table>
 </div>
 </section>
+</section>
+<section id="embeddings">
+<h2>Embeddings<a class="headerlink" href="#embeddings" title="Link to this heading">#</a></h2>
+<p>For mixed ML/MM systems created with <code class="docutils literal notranslate"><span class="pre">createMixedSystem()</span></code>, the interactions within the ML subset will be computed by
+the selected MLIP, and the interactions within the MM subset will be computed by the MM force field.  However, OpenMM-ML
+offers various <em>embedding methods</em> that controls how the interactions between the ML and MM atoms are computed.</p>
+<p>By default, OpenMM-ML uses mechanical embedding, but this can be selected with the <code class="docutils literal notranslate"><span class="pre">embedding</span></code> argument to
+<code class="docutils literal notranslate"><span class="pre">createMixedSystem()</span></code>.  Embedding methods can either be generic methods available for use along with any MLIP (described
+below), or they can be specific to certain MLIPs.  You can retrieve the names of all acceptable embedding methods (both
+generic and specific) for a given MLIP by calling <code class="docutils literal notranslate"><span class="pre">MLPotential.getSupportedEmbeddings()</span></code>.  Consult the API documentation
+for more information about how the embedding API works internally and how custom embedding methods can be implemented.</p>
+<section id="mechanical-embedding">
+<h3>Mechanical Embedding<a class="headerlink" href="#mechanical-embedding" title="Link to this heading">#</a></h3>
+<p>This default embedding method can also be explicitly selected with the embedding name <code class="docutils literal notranslate"><span class="pre">mechanical</span></code>.  Mechanical
+embedding uses the MM force field to compute the interactions between the ML and MM atoms.</p>
+<p>For periodic ML/MM systems, some MLIPs may compute the interactions between ML atoms including all periodic images;
+OpenMM-ML calls these models “long-range”.  Other MLIPs may compute only the interactions between ML atoms in a single
+periodic image.  In this case, the interaction between the ML subset and all of its other periodic images is computed
+using the MM force field when using mechanical embedding.</p>
+<p>For the pretrained models supported by OpenMM-ML, this behavior is selected automatically.  However, for custom models
+(<em>e.g.</em>, the ASE, DeePMD, and NequIP interfaces, and non-pretrained FeNNix, MACE, and TorchMDNet models) it is necessary
+to specify which behavior your model uses when doing mechanical embedding in a periodic system.  To do so, pass
+<code class="docutils literal notranslate"><span class="pre">mlLongRange=False</span></code> to <code class="docutils literal notranslate"><span class="pre">createMixedSystem()</span></code> if your model is not long-range, and <code class="docutils literal notranslate"><span class="pre">mlLongRange=True</span></code> if it is.  An error
+will be raised to inform you if this information is needed and not provided; OpenMM-ML will not assume either choice
+automatically.</p>
+</section>
+</section>
 <section id="other-packages">
-<h3>Other Packages<a class="headerlink" href="#other-packages" title="Link to this heading">#</a></h3>
+<h2>Other Packages<a class="headerlink" href="#other-packages" title="Link to this heading">#</a></h2>
 <p>OpenMM-ML is based on a plugin architecture, allowing other packages to provide their own interfaces to it.  The
-packages listed above are the ones for which OpenMM-ML has built in support.  Other packages can interface to it by
+packages listed above are the ones for which OpenMM-ML has built in support.  Other packages can provide potentials by
 defining two classes that subclass <code class="docutils literal notranslate"><span class="pre">MLPotentialImpl</span></code> and <code class="docutils literal notranslate"><span class="pre">MLPotentialImplFactory</span></code>, then registering them by specifying
 an <a class="reference external" href="https://packaging.python.org/en/latest/specifications/entry-points/">entry point</a> in the group <code class="docutils literal notranslate"><span class="pre">openmmml.potentials</span></code>.
-Consult the documentation for other packages to see whether they provide interfaces for OpenMM-ML.</p>
-</section>
+They can also provide generic embedding methods (that can be used with any potential from OpenMM-ML or any other package)
+by similarly defining subclasses of <code class="docutils literal notranslate"><span class="pre">Embedding</span></code> and <code class="docutils literal notranslate"><span class="pre">EmbeddingFactory</span></code>, and registering them with an entry point in the
+group <code class="docutils literal notranslate"><span class="pre">openmmml.embeddings</span></code>.  Consult the documentation for other packages to see whether they provide interfaces for
+OpenMM-ML.</p>
 </section>
 </section>
 
@@ -1091,9 +1120,13 @@ Consult the documentation for other packages to see whether they provide interfa
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fennix">FeNNix</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orb">Orb</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ase">ASE</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-packages">Other Packages</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings">Embeddings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-embedding">Mechanical Embedding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-packages">Other Packages</a></li>
 </ul>
   </nav></div>
 
@@ -1119,8 +1152,8 @@ Consult the documentation for other packages to see whether they provide interfa
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1154,7 +1187,7 @@ Consult the documentation for other packages to see whether they provide interfa
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
 </p></div>
       
     </div>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>API &#8212; OpenMM ML 1.7dev_d50a6d5 documentation</title>
+    <title>API &#8212; OpenMM ML 1.7dev_6d16a80 documentation</title>
   
   
   
@@ -27,23 +27,23 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="_static/documentation_options.js?v=773c8d1a"></script>
+    <script src="_static/documentation_options.js?v=930fe094"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://openmm.github.io/openmm-ml/dev/_static/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -391,6 +391,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/openmmml.mlpotential.MLPotentialImplFactory.html">openmmml.mlpotential.MLPotentialImplFactory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/openmmml.mlpotential.MLPotentialImpl.html">openmmml.mlpotential.MLPotentialImpl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/openmmml.mlpotential.EmbeddingFactory.html">openmmml.mlpotential.EmbeddingFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/openmmml.mlpotential.Embedding.html">openmmml.mlpotential.Embedding</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/openmmml.models.aimnet2potential.AIMNet2PotentialImpl.html">openmmml.models.aimnet2potential.AIMNet2PotentialImpl</a></li>
@@ -402,6 +404,9 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/openmmml.models.nequippotential.NequIPPotentialImpl.html">openmmml.models.nequippotential.NequIPPotentialImpl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/openmmml.models.orbpotential.OrbPotentialImpl.html">openmmml.models.orbpotential.OrbPotentialImpl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl.html">openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/openmmml.embeddings.mechanicalembedding.MechanicalEmbedding.html">openmmml.embeddings.mechanicalembedding.MechanicalEmbedding</a></li>
 </ul>
 </div>
 </nav></div>
@@ -479,6 +484,12 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/openmmml.mlpotential.MLPotentialImpl.html#openmmml.mlpotential.MLPotentialImpl" title="openmmml.mlpotential.MLPotentialImpl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openmmml.mlpotential.MLPotentialImpl</span></code></a></p></td>
 <td><p>Abstract interface for classes that implement potential functions.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/openmmml.mlpotential.EmbeddingFactory.html#openmmml.mlpotential.EmbeddingFactory" title="openmmml.mlpotential.EmbeddingFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openmmml.mlpotential.EmbeddingFactory</span></code></a></p></td>
+<td><p>Abstract interface for classes that create Embedding objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/openmmml.mlpotential.Embedding.html#openmmml.mlpotential.Embedding" title="openmmml.mlpotential.Embedding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openmmml.mlpotential.Embedding</span></code></a></p></td>
+<td><p>Abstract interface for classes that implement embedding methods.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -513,6 +524,17 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl.html#openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl" title="openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openmmml.models.torchmdnetpotential.TorchMDNetPotentialImpl</span></code></a></p></td>
 <td><p>This is the MLPotentialImpl implementing the TorchMDNet potential.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="embeddings">
+<h2>Embeddings<a class="headerlink" href="#embeddings" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/openmmml.embeddings.mechanicalembedding.MechanicalEmbedding.html#openmmml.embeddings.mechanicalembedding.MechanicalEmbedding" title="openmmml.embeddings.mechanicalembedding.MechanicalEmbedding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openmmml.embeddings.mechanicalembedding.MechanicalEmbedding</span></code></a></p></td>
+<td><p>Mechanical embedding.</p></td>
 </tr>
 </tbody>
 </table>
@@ -569,6 +591,7 @@
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-api">Developer API</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings">Embeddings</a></li>
 </ul>
   </nav></div>
 
@@ -594,8 +617,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -629,7 +652,7 @@
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
 </p></div>
       
     </div>
