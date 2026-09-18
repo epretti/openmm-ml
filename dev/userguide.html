@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>User Guide &#8212; OpenMM ML 1.7dev_45c0895 documentation</title>
+    <title>User Guide &#8212; OpenMM ML 1.8dev_a7fb40e documentation</title>
   
   
   
@@ -27,23 +27,23 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="_static/documentation_options.js?v=d148c53d"></script>
+    <script src="_static/documentation_options.js?v=f442fae0"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'userguide';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.20.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://openmm.github.io/openmm-ml/dev/_static/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -879,15 +879,11 @@ speed at the cost of a small decrease in accuracy.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">remove_ref_energy</span></code></p></td>
 <td><p>Argument passed to the TorchMD-Net model, please see <a class="reference external" href="https://torchmd-net.readthedocs.io/en/latest/">here</a>. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max_num_neighbors</span></code></p></td>
-<td><p>Argument passed to the TorchMD-Net model, please see <a class="reference external" href="https://torchmd-net.readthedocs.io/en/latest/">here</a>. Default is the minimum of 64 or the number of atoms in the molecule.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">batch</span></code></p></td>
-<td><p>Argument passed to the forward call of the TorchMD-Net model, please see <a class="reference external" href="https://torchmd-net.readthedocs.io/en/latest/">here</a>. With this argument you can denote different atoms to be in different batches. The format should be a 1d list containing the batch index of each atom. e.g. for two molecules each with three atoms to be treated as seperate batches you would pass <code class="docutils literal notranslate"><span class="pre">batch</span> <span class="pre">=</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1]</span></code>.</p></td>
-</tr>
 </tbody>
 </table>
 </div>
+<p>| <code class="docutils literal notranslate"><span class="pre">max_num_neighbors</span></code> | Argument passed to the TorchMD-Net model, please see <a class="reference external" href="https://torchmd-net.readthedocs.io/en/latest/">here</a>. Default is the minimum of 64 or the number of atoms in the molecule.
+| <code class="docutils literal notranslate"><span class="pre">batch</span></code> | Argument passed to the forward call of the TorchMD-Net model, please see <a class="reference external" href="https://torchmd-net.readthedocs.io/en/latest/">here</a>. With this argument you can denote different atoms to be in different batches. The format should be a 1d list containing the batch index of each atom. e.g. for two molecules each with three atoms to be treated as seperate batches you would pass <code class="docutils literal notranslate"><span class="pre">batch</span> <span class="pre">=</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1]</span></code>.</p>
 <section id="coulomb-cutoff-behaviour">
 <h4>Coulomb cutoff behaviour<a class="headerlink" href="#coulomb-cutoff-behaviour" title="Link to this heading">#</a></h4>
 <p>The Coulomb cutoff in TorchMD-Net uses a reaction-field approximation.  Applying it to a non-periodic
@@ -1006,12 +1002,17 @@ from Orbital Materials.  The following model names are supported.</p>
 <h3>ASE<a class="headerlink" href="#ase" title="Link to this heading">#</a></h3>
 <p>OpenMM-ML can use an arbitrary <a class="reference external" href="https://ase-lib.org/">ASE</a> Calculator to perform calculations.  This allows it to use
 any model or code for which a Calculator is available, including a wide variety of MLIPs and quantum chemistry programs.
-Simply pass the <a class="reference external" href="https://ase-lib.org/ase/calculators/calculators.html">Calculator</a> to <code class="docutils literal notranslate"><span class="pre">createSystem()</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">potential</span> <span class="o">=</span> <span class="n">MLPotential</span><span class="p">(</span><span class="s1">'ase'</span><span class="p">)</span>
+Simply pass the <a class="reference external" href="https://docs.ase-lib.org/ase/calculators/calculators.html">Calculator</a> to <code class="docutils literal notranslate"><span class="pre">createSystem()</span></code>.  For example,
+the following uses <a class="reference external" href="https://github.com/facebookresearch/fairchem">fairchem</a> to simulate a system with the UMA-s-1.2.1
+model.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fairchem.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">pretrained_mlip</span><span class="p">,</span> <span class="n">FAIRChemCalculator</span>
+<span class="n">predictor</span> <span class="o">=</span> <span class="n">pretrained_mlip</span><span class="o">.</span><span class="n">get_predict_unit</span><span class="p">(</span><span class="s2">"uma-s-1p2p1"</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="n">calculator</span> <span class="o">=</span> <span class="n">FAIRChemCalculator</span><span class="p">(</span><span class="n">predictor</span><span class="p">,</span> <span class="n">task_name</span><span class="o">=</span><span class="s2">"omol"</span><span class="p">)</span>
+<span class="n">potential</span> <span class="o">=</span> <span class="n">MLPotential</span><span class="p">(</span><span class="s1">'ase'</span><span class="p">)</span>
 <span class="n">system</span> <span class="o">=</span> <span class="n">potential</span><span class="o">.</span><span class="n">createSystem</span><span class="p">(</span><span class="n">topology</span><span class="p">,</span> <span class="n">calculator</span><span class="o">=</span><span class="n">calculator</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>An ASE <a class="reference external" href="https://ase-lib.org/ase/atoms.html">Atoms</a> object is created automatically based on the OpenMM Topology.  You
+<p>An ASE <a class="reference external" href="https://docs.ase-lib.org/ase/atoms.html">Atoms</a> object is created automatically based on the OpenMM Topology.  You
 can optionally provide values to add to its <code class="docutils literal notranslate"><span class="pre">info</span></code> dict.  Some Calculators use this as a mechanism to specify parameters
 like total charge and spin multiplicity:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">system</span> <span class="o">=</span> <span class="n">potential</span><span class="o">.</span><span class="n">createSystem</span><span class="p">(</span><span class="n">topology</span><span class="p">,</span> <span class="n">calculator</span><span class="o">=</span><span class="n">calculator</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="p">{</span><span class="s1">'charge'</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
@@ -1083,6 +1084,32 @@ to specify which behavior your model uses when doing mechanical embedding in a p
 <code class="docutils literal notranslate"><span class="pre">mlLongRange=False</span></code> to <code class="docutils literal notranslate"><span class="pre">createMixedSystem()</span></code> if your model is not long-range, and <code class="docutils literal notranslate"><span class="pre">mlLongRange=True</span></code> if it is.  An error
 will be raised to inform you if this information is needed and not provided; OpenMM-ML will not assume either choice
 automatically.</p>
+<section id="molecules-spanning-the-ml-mm-region">
+<h4>Molecules Spanning the ML-MM Region<a class="headerlink" href="#molecules-spanning-the-ml-mm-region" title="Link to this heading">#</a></h4>
+<p>OpenMM-ML’s mechanical embedding implementation supports the link-atom method for molecules having bonds crossing the
+boundary between the ML and MM regions.  If a molecule in the <code class="docutils literal notranslate"><span class="pre">Topology</span></code> provided contains bonds spanning the regions,
+then the molecule will appear as is to the MM force field, but will have these bonds capped by hydrogen atoms when its
+fragment(s) within the ML region are evaluated by the ML potential.</p>
+<p>The fictitious link atoms added are implemented as virtual sites which will be inserted into the <code class="docutils literal notranslate"><span class="pre">System</span></code> and <code class="docutils literal notranslate"><span class="pre">Topology</span></code>
+in use.  By default, <code class="docutils literal notranslate"><span class="pre">createMixedSystem()</span></code> only returns the <code class="docutils literal notranslate"><span class="pre">System</span></code>, but passing <code class="docutils literal notranslate"><span class="pre">returnInfo=True</span></code> returns a dictionary
+instead, with keys <code class="docutils literal notranslate"><span class="pre">system</span></code> (the <code class="docutils literal notranslate"><span class="pre">System</span></code>), <code class="docutils literal notranslate"><span class="pre">topology</span></code> (a modified copy of the <code class="docutils literal notranslate"><span class="pre">Topology</span></code> with the added sites), and
+<code class="docutils literal notranslate"><span class="pre">oldToNew</span></code> (a list of atom indices serving as a mapping from those in the original <code class="docutils literal notranslate"><span class="pre">Topology</span></code> to those in the modified
+one).  Since they are non-physical sites added only for implementing the method, the link atoms will be added to their
+own chain in the <code class="docutils literal notranslate"><span class="pre">Topology</span></code> separate from any existing chains.</p>
+<p>Each link atom is maintained at a fixed distance along its respective bond crossing the boundary.  By default, this
+distance is chosen based on the covalent radius of the atom on the ML side of the bond.  To override these distances,
+pass <code class="docutils literal notranslate"><span class="pre">linkAtomDistances=[...]</span></code> to <code class="docutils literal notranslate"><span class="pre">createMixedSystem()</span></code> with a list of tuples <code class="docutils literal notranslate"><span class="pre">(atom1,</span> <span class="pre">atom2,</span> <span class="pre">distance)</span></code> for each pair
+of atoms for which to use a custom distance.</p>
+<p>Multiple link bonds from the same atom in the ML region are supported.  However, OpenMM-ML will raise an error if an ML
+subset is given that would create more than one link bond to the same atom in the MM region.  Such a configuration would
+place the associated link atoms too close to one another.</p>
+<p>To avoid double-counting bonded interactions between the MM force field and ML potential, OpenMM-ML will delete:</p>
+<ul class="simple">
+<li><p>All MM bonds contained completely within the ML region.</p></li>
+<li><p>All MM angles and torsions contained completely within the ML region, but accounting for the presence of any link
+atoms and bonds leaving the region.</p></li>
+</ul>
+</section>
 </section>
 </section>
 <section id="other-packages">
@@ -1164,7 +1191,10 @@ OpenMM-ML.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings">Embeddings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-embedding">Mechanical Embedding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-embedding">Mechanical Embedding</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#molecules-spanning-the-ml-mm-region">Molecules Spanning the ML-MM Region</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-packages">Other Packages</a></li>
@@ -1193,8 +1223,8 @@ OpenMM-ML.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1228,7 +1258,7 @@ OpenMM-ML.</p>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
 </p></div>
       
     </div>
